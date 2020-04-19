@@ -18,7 +18,8 @@ class RecipientController {
       city: Yup.string()
         .required(),
       zip_code: Yup.string()
-        .required(),
+        .required()
+        .matches(/\d{5}-\d{3}/),
     });
 
     if (!(await schema.isValid(req.body)))
@@ -60,6 +61,7 @@ class RecipientController {
       state: Yup.string(),
       city: Yup.string(),
       zip_code: Yup.string()
+        .matches(/\d{5}-\d{3}/),
     });
 
     if (!(await schema.isValid(req.body)))
